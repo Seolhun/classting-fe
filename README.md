@@ -2,6 +2,49 @@
 
 To Build Simple QnA React App
 
+## Scheduling
+
+- Page
+  - StartQuestionPage
+  - QuestionListPage
+  - SummaryPage
+  - MyPage
+- Containers
+  - Question
+  - Summaries
+  - Summary
+  - AnswerStatistics
+  - WorkbookList
+  - HistoryNote
+- Component
+  - Button
+  - CheckBox
+  - HTMLSelect
+  - TypoGraphy
+
+7일 간 작업 스케쥴링
+
+- [ ] StartQuestionPage (1일)
+  - [ ] HTMLSelect
+  - [ ] Button
+- [ ] QuestionListPage (1일)
+  - [ ] Question
+  - [ ] TypoGraphy
+  - [ ] CheckBox
+- [ ] SummaryPage (2일)
+  - [ ] SummaryList
+  - [ ] Summary
+  - [ ] AnswerStatistics
+- [ ] MyPage (2일)
+  - [ ] WorkbookList
+  - [ ] Workbook
+  - [ ] HistoryNote
+- [ ] 테스트코드 (1일)
+  - [ ] Button
+  - [ ] Checkbox
+  - [ ] TypoGraphy
+  - [ ] ...
+
 ## 요구사항
 
 ### 필수구현
