@@ -1,6 +1,6 @@
-export type QuestionDifficulty = 'easy' | 'medium' | 'hard';
-export type QuestionType = 'multiple' | 'boolean';
-export enum QuestionCategoryEnum {
+export type WorkbookDifficulty = 'any' | 'easy' | 'medium' | 'hard';
+export type WorkbookType = 'any' | 'multiple' | 'boolean';
+export enum WorkbookCategoryEnum {
   ANY_CATEGORY,
   // Categories
   GENERAL_KNOWLEDGE = 9,
@@ -28,17 +28,42 @@ export enum QuestionCategoryEnum {
   ENTERTAINMENT_JAPANESE_ANIME_MANGA = 31,
   ENTERTAINMENT_CARTOON_ANIMATIONS = 32,
 }
+export const questionCategories = Object.keys(WorkbookCategoryEnum).filter(
+  (key) => typeof WorkbookCategoryEnum[key] !== 'string',
+);
 
-export interface QuestionModel {
-  category: string;
+export interface WorkbookModel {
+  category: WorkbookCategoryEnum;
 
-  type: QuestionType;
+  type: WorkbookType;
 
-  difficulty: QuestionDifficulty;
+  difficulty: WorkbookDifficulty;
 
   question: string;
 
   correct_answer: string;
 
   incorrect_answers: string[];
+}
+
+export interface WorkbookGeneratorModel {
+  /**
+   * @default 10
+   */
+  amount: number;
+
+  /**
+   * @default any
+   */
+  category?: WorkbookModel['category'];
+
+  /**
+   * @default any
+   */
+  difficulty?: WorkbookModel['difficulty'];
+
+  /**
+   * @default any
+   */
+  type?: WorkbookModel['type'];
 }
