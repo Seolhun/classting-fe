@@ -3,7 +3,6 @@ import axios, {
   CancelTokenStatic,
   AxiosRequestConfig,
 } from 'axios';
-import { ApiResponse } from './APIResponses';
 import { APIException } from './APIException';
 
 export interface APIClientProps {
@@ -55,10 +54,7 @@ class APIClient implements APIClientProps {
     });
   }
 
-  /**
-   * TODO: Data has null because of api fetch error.
-   */
-  async fetch<T = any>(option: AxiosRequestConfig): Promise<ApiResponse<T>> {
+  async fetch<T = any>(option: AxiosRequestConfig): Promise<T> {
     let response;
     const cancelTokenSource = this.cancelToken.source();
     try {

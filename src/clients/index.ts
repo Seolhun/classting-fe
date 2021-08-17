@@ -1,2 +1,2 @@
-export * from './API.Client';
-export * from './API.Service';
+export * from './APIClient';
+export * from './APIService';

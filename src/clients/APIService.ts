@@ -1,4 +1,4 @@
-import { QuestionAPI } from './question';
+import { QuestionAPI } from './questions';
 
 const APIService = {
   question: QuestionAPI,
