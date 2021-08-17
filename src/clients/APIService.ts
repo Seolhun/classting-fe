@@ -1,7 +1,7 @@
-import { QuestionAPI } from './questions';
+import { WorkbookAPI } from './questions';
 
 const APIService = {
-  question: QuestionAPI,
+  workbooks: WorkbookAPI,
 };
 
 export { APIService };
