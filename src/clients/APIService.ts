@@ -1,4 +1,4 @@
-import { WorkbookAPI } from './questions';
+import { WorkbookAPI } from './workbooks';
 
 const APIService = {
   workbooks: WorkbookAPI,
