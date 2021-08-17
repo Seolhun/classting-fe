@@ -1,11 +1,7 @@
 import React from 'react';
 
 const StartQuestionPage = () => {
-	return (
-		<div>
-			StartQuestionPage
-		</div>
-	)
-}
+  return <div>StartQuestionPage</div>;
+};
 
 export default StartQuestionPage;

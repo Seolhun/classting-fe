@@ -1,0 +1,28 @@
+.SH__Toast__Provider {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+
+  &.top-left {
+    top: 1rem;
+    left: 1rem;
+
+    @media (min-width: 480px) {
+      right: 1rem;
+    }
+  }
+  &.top-right {
+    top: 1rem;
+    right: 1rem;
+
+    @media (min-width: 480px) {
+      left: 1rem;
+    }
+  }
+}
+
+.SH__ToastCard {
+  & + & {
+    margin-top: 1rem;
+  }
+}

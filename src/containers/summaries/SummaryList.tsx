@@ -1,11 +1,7 @@
 import React from 'react';
 
 const SummaryList = () => {
-	return (
-		<div>
-			SummaryList
-		</div>
-	)
-}
+  return <div>SummaryList</div>;
+};
 
 export default SummaryList;
