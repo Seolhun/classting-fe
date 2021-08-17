@@ -1,0 +1,58 @@
+export default {
+  title: '문제집 생성기',
+  start: '시작하기',
+  reset: '초기화',
+  amount: {
+    label: '문제 개수',
+  },
+  categories: {
+    label: '문제 종류',
+    /**
+     * @see QuestionModel.ts
+     */
+    ANY_CATEGORY: '모든 카테고리',
+    GENERAL_KNOWLEDGE: '일반 지식',
+    ENTERTAINMENT_BOOKS: '엔터테인먼트: 책',
+    ENTERTAINMENT_FILM: '엔터테인먼트: 필름',
+    ENTERTAINMENT_MUSIC: '엔터테인먼트: 음악',
+    ENTERTAINMENT_MUSICALS_THEATRES: '엔터테인먼트: 뮤지컬 & 극장',
+    ENTERTAINMENT_TELEVISION: '엔터테인먼트: 텔레비전',
+    ENTERTAINMENT_VIDEO_GAMES: '엔터테인먼트: 비디오 게임',
+    ENTERTAINMENT_BOARD_GAMES: '엔터테인먼트: 보드 게임',
+    SCIENCE_NATURE: '과학 & 자연',
+    SCIENCE_COMPUTERS: '과학: 컴퓨터 ',
+    SCIENCE_MATHEMATICS: '과학: 수학',
+    MYTHOLOGY: '신화학',
+    SPORTS: '스포츠',
+    GEOGRAPHY: '지리학',
+    HISTORY: '역사',
+    POLITICS: '정치',
+    ART: '미술',
+    CELEBRITIES: '연예인',
+    ANIMALS: '동물',
+    VEHICLES: '차량',
+    ENTERTAINMENT_COMICS: '엔터테인먼트: 만화',
+    SCIENCE_GADGETS: '과학 가제트',
+    ENTERTAINMENT_JAPANESE_ANIME_MANGA: '엔터테인먼트: 일본 애니메이션 만화',
+    ENTERTAINMENT_CARTOON_ANIMATIONS: '엔터테인먼트: 만화 애니메이션',
+  },
+  difficulties: {
+    label: '난이도',
+    /**
+     * @see QuestionModel.ts
+     */
+    any: '모든 난이도',
+    easy: '쉬움',
+    medium: '보통',
+    hard: '어려움',
+  },
+  type: {
+    label: '문제 유형',
+    /**
+     * @see QuestionModel.ts
+     */
+    any: '모든 유형',
+    multiple: '다중 선택',
+    boolean: '예 / 아니오',
+  },
+};
