@@ -33,6 +33,12 @@ export const questionCategories = Object.keys(WorkbookCategoryEnum).filter(
 );
 
 export interface WorkbookModel {
+  response_code: number;
+
+  results: WorkbookQuestionModel[];
+}
+
+export interface WorkbookQuestionModel {
   category: WorkbookCategoryEnum;
 
   type: WorkbookType;
@@ -44,6 +50,11 @@ export interface WorkbookModel {
   correct_answer: string;
 
   incorrect_answers: string[];
+
+  /**
+   * 고른 정답
+   */
+  chosenAnswer?: string;
 }
 
 export interface WorkbookGeneratorModel {
@@ -55,15 +66,15 @@ export interface WorkbookGeneratorModel {
   /**
    * @default any
    */
-  category?: WorkbookModel['category'];
+  category?: WorkbookQuestionModel['category'];
 
   /**
    * @default any
    */
-  difficulty?: WorkbookModel['difficulty'];
+  difficulty?: WorkbookQuestionModel['difficulty'];
 
   /**
    * @default any
    */
-  type?: WorkbookModel['type'];
+  type?: WorkbookQuestionModel['type'];
 }
