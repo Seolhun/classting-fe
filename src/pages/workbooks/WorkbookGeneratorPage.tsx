@@ -85,7 +85,7 @@ const WorkbookGeneratorPage = () => {
 
   return (
     <>
-      <Meta title="Workbook Generator" />
+      <Meta title="Build Your Workbook" />
       <WorkbookLayout>
         <div className={classnames('max-w-md', 'mx-auto')}>
           <div className={'text-center'}>
