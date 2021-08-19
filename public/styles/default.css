@@ -4,6 +4,12 @@
   font-family: 'Roboto', 'Noto Sans KR', sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
 }
