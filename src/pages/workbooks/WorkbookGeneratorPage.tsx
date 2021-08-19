@@ -14,6 +14,7 @@ import {
   H2,
   Button,
   HTMLSelectOptionProps,
+  Meta,
 } from '@/components';
 import {
   questionCategories,
@@ -22,8 +23,8 @@ import {
   WorkbookGeneratorModel,
   WorkbookType,
 } from '@/models';
-import { workbookGeneratorState, questionListState } from '@/stores';
-import { indexDB } from '@/indexDB';
+import { workbookGeneratorState } from '@/stores';
+import { workbookDB } from '@/indexDB';
 
 interface WorkbookGeneratorFormValues extends WorkbookGeneratorModel {}
 
@@ -31,7 +32,6 @@ const WorkbookGeneratorPage = () => {
   const { t } = useTranslation();
   const router = useHistory();
   const [workbookGenerator] = useRecoilState(workbookGeneratorState);
-  const [, setWorkbooks] = useRecoilState(questionListState);
 
   const form = useForm<WorkbookGeneratorFormValues>({
     defaultValues: workbookGenerator,
@@ -69,62 +69,67 @@ const WorkbookGeneratorPage = () => {
     }));
   }, []);
 
-  const resetForm = () => {
+  const resetForm = React.useCallback(() => {
     reset();
-  };
+  }, []);
 
   const onSubmit = async (values: WorkbookGeneratorFormValues) => {
-    const response = await APIService.question.generateWorkbookList(values);
-    if (response) {
-      const key = await indexDB.table('workbooks').put({
-        id: Date.now(),
-        results: response.results,
-      });
-      setWorkbooks(response.results);
-      if (key) {
-        router.push(`/workbooks/${Date.now()}`);
+    const response = await APIService.workbooks.generateWorkbookList(values);
+    if (Array.isArray(response.results)) {
+      const id = await workbookDB.workbooks.add(response);
+      if (id) {
+        router.push(`/workbooks/${id}`);
       }
     }
   };
 
   return (
-    <WorkbookLayout>
-      <div className={classnames('text-center')}>
-        <H2>{t('workbooks:title')}</H2>
-      </div>
-      <div className={classnames('max-w-md', 'mx-auto', 'mt-10')}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <FormWrapper label={t('workbooks:amount.label')}>
-            <Input {...register('amount')} />
-          </FormWrapper>
-          <FormWrapper label={t('workbooks:categories.label')}>
-            <HTMLSelect
-              {...register('category')}
-              options={memoCategoriesOptions}
-            />
-          </FormWrapper>
-          <FormWrapper label={t('workbooks:difficulties.label')}>
-            <HTMLSelect
-              {...register('difficulty')}
-              options={memoDifficultyOptions}
-            />
-          </FormWrapper>
-          <FormWrapper label={t('workbooks:type.label')}>
-            <HTMLSelect {...register('type')} options={memoTypeOptions} />
-          </FormWrapper>
-          <FormWrapper>
-            <div className="grid grid-cols-3 gap-4 mt-8">
-              <Button className="col-span-2" type="submit">
-                {t('workbooks:start')}
-              </Button>
-              <Button className="col-span-1" onClick={resetForm}>
-                {t('workbooks:reset')}
-              </Button>
-            </div>
-          </FormWrapper>
-        </form>
-      </div>
-    </WorkbookLayout>
+    <>
+      <Meta title="Workbook Generator" />
+      <WorkbookLayout>
+        <div className={classnames('max-w-md', 'mx-auto')}>
+          <div className={'text-center'}>
+            <H2>{t('workbooks:title')}</H2>
+          </div>
+          <div className={'mt-10'}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <FormWrapper label={t('workbooks:amount.label')}>
+                <Input {...register('amount')} type="number" min={1} max={50} />
+              </FormWrapper>
+              <FormWrapper label={t('workbooks:categories.label')}>
+                <HTMLSelect
+                  {...register('category')}
+                  options={memoCategoriesOptions}
+                />
+              </FormWrapper>
+              <FormWrapper label={t('workbooks:difficulties.label')}>
+                <HTMLSelect
+                  {...register('difficulty')}
+                  options={memoDifficultyOptions}
+                />
+              </FormWrapper>
+              <FormWrapper label={t('workbooks:type.label')}>
+                <HTMLSelect {...register('type')} options={memoTypeOptions} />
+              </FormWrapper>
+              <FormWrapper>
+                <div className="grid grid-cols-3 gap-4 mt-8">
+                  <Button type="submit" className="col-span-2">
+                    {t('workbooks:start')}
+                  </Button>
+                  <Button
+                    className="col-span-1"
+                    intent="dark"
+                    onClick={resetForm}
+                  >
+                    {t('workbooks:reset')}
+                  </Button>
+                </div>
+              </FormWrapper>
+            </form>
+          </div>
+        </div>
+      </WorkbookLayout>
+    </>
   );
 };
 
