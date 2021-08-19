@@ -21,14 +21,14 @@ export const mainRoutes: RouteModel[] = [
   {
     key: 'WorkbookPage',
     name: 'WorkbookPage',
-    path: '/workbooks/:id',
+    path: '/workbooks/:workbookID',
     exact: true,
     component: React.lazy(() => import('./workbooks/WorkbookPage')),
   },
   {
     key: 'WorkbookSummaryPage',
     name: 'WorkbookSummaryPage',
-    path: '/workbooks/:id/summary',
+    path: '/workbooks/:workbookID/summary',
     exact: true,
     component: React.lazy(() => import('./workbooks/WorkbookSummaryPage')),
   },
