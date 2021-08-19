@@ -11,22 +11,20 @@ import { I18nextProvider } from 'react-i18next';
 import { RecoilRoot } from 'recoil';
 
 import i18n from './i18n';
-import { ErrorBoundary, ToastProvider } from './components';
+import { ErrorBoundary } from './components';
 import { MainRoutes } from './pages/MainRoutes';
 
 const Root = () => {
   return (
     <ErrorBoundary>
       <RecoilRoot>
-        <ToastProvider>
-          <I18nextProvider i18n={i18n}>
-            <HashRouter>
-              <React.Suspense fallback={null}>
-                <MainRoutes />
-              </React.Suspense>
-            </HashRouter>
-          </I18nextProvider>
-        </ToastProvider>
+        <I18nextProvider i18n={i18n}>
+          <HashRouter>
+            <React.Suspense fallback={null}>
+              <MainRoutes />
+            </React.Suspense>
+          </HashRouter>
+        </I18nextProvider>
       </RecoilRoot>
     </ErrorBoundary>
   );
