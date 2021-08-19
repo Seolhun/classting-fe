@@ -1,6 +1,6 @@
 export const SEO = {
-  TITLE: 'Classting Question',
-  DESCRIPTION: 'Classting question frontend',
+  TITLE: 'Classting',
+  DESCRIPTION: 'Classting frontend',
   HOME_LINK: 'https://www.classting.com/',
   KEYWORDS: 'classting',
   LOGO: '/public/manifest/launcher-icon@4x.png',
