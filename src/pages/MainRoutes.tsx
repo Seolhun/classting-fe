@@ -2,6 +2,13 @@ import React from 'react';
 
 import { RouteModel } from '@/models';
 import { RenderRoutes } from '@/containers';
+import { WorkbookLayout } from '@/layouts';
+
+import WorkbookGeneratorPage from './workbooks/WorkbookGeneratorPage';
+import WorkbookListPage from './workbooks/WorkbookListPage';
+import WorkbookPage from './workbooks/WorkbookPage';
+import WorkbookSummaryPage from './workbooks/WorkbookSummaryPage';
+import MyPage from './me/MyPage';
 
 export const mainRoutes: RouteModel[] = [
   {
@@ -9,35 +16,39 @@ export const mainRoutes: RouteModel[] = [
     name: 'WorkbookGeneratorPage',
     path: '/',
     exact: true,
-    component: React.lazy(() => import('./workbooks/WorkbookGeneratorPage')),
+    component: WorkbookGeneratorPage,
   },
   {
     key: 'WorkbookListPage',
-    name: 'WorkbookListPage',
+    name: 'Workbooks',
     path: '/workbooks',
     exact: true,
-    component: React.lazy(() => import('./workbooks/WorkbookListPage')),
+    component: WorkbookListPage,
+    isNavigation: true,
+    uniquePath: 'workbooks',
   },
   {
     key: 'WorkbookPage',
     name: 'WorkbookPage',
     path: '/workbooks/:workbookID',
     exact: true,
-    component: React.lazy(() => import('./workbooks/WorkbookPage')),
+    component: WorkbookPage,
   },
   {
     key: 'WorkbookSummaryPage',
     name: 'WorkbookSummaryPage',
     path: '/workbooks/:workbookID/summary',
     exact: true,
-    component: React.lazy(() => import('./workbooks/WorkbookSummaryPage')),
+    component: WorkbookSummaryPage,
   },
   {
     key: 'MyPage',
-    name: 'MyPage',
+    name: 'Me',
     path: '/me',
     exact: true,
-    component: React.lazy(() => import('./me/MyPage')),
+    component: MyPage,
+    isNavigation: true,
+    uniquePath: 'me',
   },
   {
     key: 'Error404',
@@ -48,7 +59,11 @@ export const mainRoutes: RouteModel[] = [
 ];
 
 const MainRoutes: React.FC = () => {
-  return <RenderRoutes routes={mainRoutes} />;
+  return (
+    <WorkbookLayout>
+      <RenderRoutes routes={mainRoutes} />
+    </WorkbookLayout>
+  );
 };
 
 export { MainRoutes };
