@@ -20,6 +20,11 @@ export interface ProgressBarProps extends ExtensionProps {
   badge?: React.ReactNode;
 
   /**
+   * Progressbar UI Type
+   */
+  simple?: boolean;
+
+  /**
    * Color Intent
    */
   intent?: IntentType;
@@ -30,12 +35,13 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
   badge,
   progress = 0,
+  simple = false,
   intent = 'primary',
   ...rests
 }) => {
   return (
     <div {...rests} className={classnames(CLASSNAME, className)}>
-      <div className="relative pt-1">
+      <div className="relative">
         <div className="flex mb-2 items-center justify-between">
           {badge && (
             <div>
@@ -52,17 +58,19 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
               </span>
             </div>
           )}
-          <div className="text-right">
-            <span
-              className={classnames(
-                'inline-block',
-                'text-xs font-semibold',
-                `${createColorByIntent(intent, 600, 'text')}`,
-              )}
-            >
-              {`${progress}%`}
-            </span>
-          </div>
+          {!simple && (
+            <div className="text-right">
+              <span
+                className={classnames(
+                  'inline-block',
+                  'text-xs font-semibold',
+                  `${createColorByIntent(intent, 600, 'text')}`,
+                )}
+              >
+                {`${progress}%`}
+              </span>
+            </div>
+          )}
         </div>
         <div
           className={classnames(
