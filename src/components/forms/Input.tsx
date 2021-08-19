@@ -2,11 +2,12 @@ import React from 'react';
 import classnames from 'classnames';
 
 const CLASSNAME = 'SH__Input';
-type ElementProps = React.InputHTMLAttributes<HTMLInputElement>;
+type Element = HTMLInputElement;
+type ElementProps = React.InputHTMLAttributes<Element>;
 type ExtensionProps = ElementProps;
 export interface InputProps extends ExtensionProps {}
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<Element, InputProps>(
   ({ className, ...rests }, ref) => {
     return (
       <input
@@ -16,7 +17,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         className={classnames(
           CLASSNAME,
           className,
-          'shadow-sm border border-gray-400 focus:ring-gray-800 p-3 block w-full sm:text-sm rounded-md',
+          'block',
+          'w-full',
+          'p-3',
+          'shadow-sm',
+          'border border-gray-400',
+          'focus:ring-gray-800 rounded-md',
         )}
       />
     );

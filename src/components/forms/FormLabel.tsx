@@ -17,7 +17,8 @@ const FormLabel: React.FC<FormLabelProps> = ({
       htmlFor={htmlFor}
       className={classnames(
         className,
-        'block text-base font-medium text-gray-700 mb-2',
+        'block',
+        'text-base font-medium text-gray-700',
       )}
     >
       {children}

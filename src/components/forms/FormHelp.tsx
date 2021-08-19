@@ -11,10 +11,7 @@ const FormHelp: React.FC<FormHelpProps> = ({
   ...props
 }) => {
   return (
-    <p
-      {...props}
-      className={classnames(className, 'mt-2 text-sm text-gray-500')}
-    >
+    <p {...props} className={classnames(className, 'text-sm text-gray-500')}>
       {children}
     </p>
   );

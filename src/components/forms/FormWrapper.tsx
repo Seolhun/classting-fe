@@ -32,9 +32,13 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
 }) => {
   return (
     <div {...props} className={classnames(className, 'SH__FormWrapper')}>
-      {label && <FormLabel htmlFor={htmlFor}>{label}</FormLabel>}
+      {label && (
+        <FormLabel className="mb-2" htmlFor={htmlFor}>
+          {label}
+        </FormLabel>
+      )}
       {children}
-      {help && <FormHelp>{help}</FormHelp>}
+      {help && <FormHelp className="mt-2">{help}</FormHelp>}
     </div>
   );
 };
