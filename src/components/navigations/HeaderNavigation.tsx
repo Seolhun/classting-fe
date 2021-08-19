@@ -5,7 +5,12 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import { RouteModel } from '@/models';
 
-export interface HeaderNavigationProps {
+const CLASSNAME = 'SH__HeaderNavigation';
+type Element = HTMLElement;
+type ElementProps = React.HTMLAttributes<Element>;
+type ExtensionProps = ElementProps;
+
+export interface HeaderNavigationProps extends ExtensionProps {
   /**
    * Set this to rendered routes
    */
@@ -37,6 +42,8 @@ const HeaderNavigation: React.FC<HeaderNavigationProps> = ({
     />
   ),
   onClickRoute,
+  className,
+  ...rests
 }) => {
   const location = useLocation();
   const history = useHistory();
@@ -71,7 +78,15 @@ const HeaderNavigation: React.FC<HeaderNavigationProps> = ({
   }, [visibleMobile]);
 
   return (
-    <nav className="bg-gray-800">
+    <nav
+      {...rests}
+      className={classnames(
+        CLASSNAME,
+        className,
+        'absolute top-0 right-0 left-0',
+        'bg-gray-800 ',
+      )}
+    >
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-800">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">

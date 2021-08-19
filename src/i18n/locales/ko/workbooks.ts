@@ -1,7 +1,13 @@
 export default {
-  title: '문제집 생성기',
-  start: '시작하기',
-  reset: '초기화',
+  start: '퀴즈 풀기',
+  reset: '재설정',
+  prev: '이전',
+  next: '다음',
+  submit: '제출',
+  name: {
+    label: '문제집 이름',
+    placeholder: '문제집을 이름을 주면 구분하기 쉬워집니다.',
+  },
   amount: {
     label: '문제 개수',
   },
@@ -52,7 +58,7 @@ export default {
      * @see QuestionModel.ts
      */
     any: '모든 유형',
-    multiple: '다중 선택',
+    multiple: '객관식',
     boolean: '예 / 아니오',
   },
 };

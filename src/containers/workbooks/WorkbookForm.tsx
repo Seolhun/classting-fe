@@ -2,13 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
-import { useRecoilState } from 'recoil';
 
 import { WorkbookModel } from '@/models';
 import { Button } from '@/components';
 import { WorkbookQuestionForm } from '@/containers';
 import { useStep } from '@/hooks';
-import { workbookState } from '@/stores';
 
 import { WorkbookQuestionFormValues } from './WorkbookQuestionForm';
 
@@ -18,7 +16,6 @@ export interface WorkbookFormProps {
 
 const WorkbookForm: React.FC<WorkbookFormProps> = ({ workbook }) => {
   const { t } = useTranslation();
-  const [, setWorkbook] = useRecoilState(workbookState);
   const { step, isFirstStep, isLastStep, nextStep, prevStep } = useStep(
     workbook?.results?.length,
   );
@@ -50,11 +47,9 @@ const WorkbookForm: React.FC<WorkbookFormProps> = ({ workbook }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        {workbook?.results && (
-          <WorkbookQuestionForm {...question} onSubmit={solveQuestion} />
-        )}
+        <WorkbookQuestionForm {...question} onSubmit={solveQuestion} />
       </motion.div>
-      <div className={classnames('grid grid-cols-2 gap-4', 'mt-8')}>
+      <div className={classnames('grid grid-cols-2 gap-4', 'mt-2')}>
         {!isFirstStep && (
           <Button
             intent="secondary"

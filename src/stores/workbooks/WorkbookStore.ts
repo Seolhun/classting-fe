@@ -9,6 +9,7 @@ export const workbookGeneratorState = atom<WorkbookGeneratorModel>({
     category: undefined,
     difficulty: undefined,
     type: undefined,
+    name: '',
   },
 });
 

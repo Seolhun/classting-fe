@@ -1,6 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import { createOptionsColorByIntent } from '@/utils';
+
 const CLASSNAME = 'SH__Card';
 type Element = HTMLDivElement;
 type ElementProps = React.HTMLAttributes<Element>;
@@ -21,6 +23,7 @@ const Card: React.FC<CardProps> = ({ children, className, ...rests }) => {
         'text-left',
         'transform transition-all',
         'overflow-hidden',
+        createOptionsColorByIntent('border', ['hover'], 'primary'),
       )}
     >
       <div

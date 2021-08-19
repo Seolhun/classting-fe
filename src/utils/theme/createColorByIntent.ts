@@ -61,10 +61,10 @@ const createColorByIntent = (
 };
 
 const createOptionsColorByIntent = (
-  intent: IntentType = 'primary',
-  weight: ColorWeight = 500,
   prefix: ColorPrefix = '',
   options: ColorOption[] = [],
+  intent: IntentType = 'primary',
+  weight: ColorWeight = 500,
 ): string => {
   const computedPrefix = createPrefix(prefix);
   const intentColor = createIntentColor(intent);

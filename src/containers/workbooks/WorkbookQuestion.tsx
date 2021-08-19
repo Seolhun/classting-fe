@@ -12,7 +12,7 @@ const WorkbookQuestion: React.FC<WorkbookQuestionProps> = ({
   difficulty,
   question,
   correct_answer,
-  incorrect_answers,
+  incorrect_answers = [],
 }) => {
   const { t } = useTranslation();
 

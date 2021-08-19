@@ -39,10 +39,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           'rounded-md',
           'text-white',
           createColorByIntent(intent, intentWeight, 'bg'),
-          createOptionsColorByIntent(intent, intentWeight, 'bg', ['hover']),
-          createOptionsColorByIntent(intent, intentWeight, 'ring-offset', [
-            'focus',
-          ]),
+          createOptionsColorByIntent('bg', ['hover'], intent, intentWeight),
+          createOptionsColorByIntent(
+            'ring-offset',
+            ['focus'],
+            intent,
+            intentWeight,
+          ),
           'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white',
         )}
       >

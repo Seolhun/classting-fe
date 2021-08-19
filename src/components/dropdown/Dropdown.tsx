@@ -131,10 +131,13 @@ const Dropdown = React.forwardRef<HTMLInputElement, DropdownProps>(
             'bg-white border border-gray-300',
             'text-left sm:text-sm',
             'focus:ring-1 focus:outline-none',
-            createOptionsColorByIntent(intent, intentWeight, 'ring', ['focus']),
-            createOptionsColorByIntent(intent, intentWeight, 'border', [
-              'focus',
-            ]),
+            createOptionsColorByIntent('ring', ['focus'], intent, intentWeight),
+            createOptionsColorByIntent(
+              'border',
+              ['focus'],
+              intent,
+              intentWeight,
+            ),
             'cursor-pointer',
           )}
           aria-haspopup="listbox"
