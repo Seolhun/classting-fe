@@ -2,11 +2,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { WorkbookQuestionModel } from '@/models';
-import { Card, H4, Tag, Checkbox, Radio } from '@/components';
+import { Card, H5, Tag, Radio } from '@/components';
 
-export interface QuestionProps extends WorkbookQuestionModel {}
+export interface WorkbookQuestionProps extends WorkbookQuestionModel {}
 
-const Question: React.FC<QuestionProps> = ({
+const WorkbookQuestion: React.FC<WorkbookQuestionProps> = ({
   category,
   type,
   difficulty,
@@ -16,7 +16,7 @@ const Question: React.FC<QuestionProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const memoAllQuestions = React.useMemo(() => {
+  const memoAllAnswers = React.useMemo(() => {
     return [...incorrect_answers, correct_answer].sort(
       () => Math.random() * 10 - Math.random() * 10,
     );
@@ -24,20 +24,18 @@ const Question: React.FC<QuestionProps> = ({
 
   return (
     <Card>
-      <div className="">{category}</div>
-      <div>
+      <div>{category}</div>
+      <div className="mt-1">
         <Tag>{t(`workbooks:difficulties.${difficulty}`)}</Tag>
         <Tag>{t(`workbooks:type.${type}`)}</Tag>
       </div>
       <div className="mt-2">
-        <H4>{question}</H4>
-        {memoAllQuestions.map((memoQuestion, i) => (
+        <H5 dangerouslySetInnerHTML={{ __html: question }} />
+        {memoAllAnswers.map((memoQuestion, i) => (
           <div key={i}>
-            {type === 'multiple' ? (
-              <Checkbox name={`${question}-${i}`}>{memoQuestion}</Checkbox>
-            ) : (
-              <Radio name={`${question}-${i}`}>{memoQuestion}</Radio>
-            )}
+            <Radio htmlForm={`${question}-${i}`} name="chosenAnswer">
+              {memoQuestion}
+            </Radio>
           </div>
         ))}
       </div>
@@ -45,5 +43,5 @@ const Question: React.FC<QuestionProps> = ({
   );
 };
 
-export { Question };
-export default Question;
+export { WorkbookQuestion };
+export default WorkbookQuestion;

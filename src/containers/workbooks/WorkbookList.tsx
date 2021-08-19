@@ -1,7 +1,20 @@
 import React from 'react';
 
-const WorkbookList = () => {
-  return <div>WorkbookList</div>;
+import { WorkbookModel } from '@/models';
+
+export interface WorkbookListProps {
+  workbooks: WorkbookModel[];
+}
+
+const WorkbookList: React.FC<WorkbookListProps> = ({ workbooks }) => {
+  return (
+    <div>
+      {workbooks.map((workbook) => {
+        <div>{workbook.results.length}</div>;
+      })}
+    </div>
+  );
 };
 
+export { WorkbookList };
 export default WorkbookList;
