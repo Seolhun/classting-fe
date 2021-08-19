@@ -8,17 +8,23 @@ type Element = HTMLInputElement;
 type ElementProps = React.InputHTMLAttributes<Element>;
 type ExtensionProps = ElementProps;
 
-export interface CheckboxProps extends ExtensionProps {}
+export interface CheckboxProps extends ExtensionProps {
+  htmlForm?: string;
+}
 
 const Checkbox = React.forwardRef<Element, CheckboxProps>(
-  ({ className, children, ...rests }, ref) => {
+  ({ className, children, htmlForm, ...rests }, ref) => {
+    const htmlForAndID = htmlForm ?? rests.name;
     return (
-      <FormLabel className="inline-flex items-center" htmlFor={rests.name}>
+      <FormLabel
+        className="inline-flex items-center cursor-pointer"
+        htmlFor={htmlForAndID}
+      >
         <input
           {...rests}
           ref={ref}
           type="checkbox"
-          id={rests.name}
+          id={htmlForAndID}
           className={classnames(
             CLASSNAME,
             className,
@@ -27,7 +33,6 @@ const Checkbox = React.forwardRef<Element, CheckboxProps>(
             'shadow-sm',
             'border border-gray-400',
             'focus:ring-gray-800 rounded-md',
-            'cursor-pointer',
           )}
         />
         <span className="ml-2">{children}</span>
