@@ -3,19 +3,25 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jest: true
+    jest: true,
+    node: true,
   },
-  extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:prettier/recommended'
+  ],
   plugins: ['react', '@typescript-eslint', 'eslint-plugin', 'jest'],
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    'ecmaFeatures': {
+      'jsx': true
+    }
+  },
   rules: {
-    // ! Will be Removed
-    'import/no-cycle': 0,
-    'mouse-events-have-key-events': 0,
     // Custom
-    'no-use-before-define': 0,
     'no-unused-vars': 0,
-    'operator-linebreak': ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
     // React
     'react/prop-types': 0,
     'react/display-name': 0,
