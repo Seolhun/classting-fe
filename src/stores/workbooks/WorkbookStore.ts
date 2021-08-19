@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom } from 'recoil';
 
 import { WorkbookGeneratorModel, WorkbookModel } from '@/models';
 
@@ -12,18 +12,16 @@ export const workbookGeneratorState = atom<WorkbookGeneratorModel>({
   },
 });
 
-export const workbookListState = atom<WorkbookModel[]>({
-  key: 'workbookListState',
-  default: [],
+export const workbookState = atom<WorkbookModel>({
+  key: 'workbookState',
+  default: {
+    id: -1,
+    response_code: -1,
+    results: [],
+  },
 });
 
-export const workbookListSelector = selector<WorkbookModel[]>({
-  key: 'workbookListSelector',
-  set: ({ set }, nextWorkbookList) => {
-    return set(workbookListState, nextWorkbookList);
-  },
-  get: ({ get }) => {
-    const workbookList = get(workbookListState);
-    return workbookList;
-  },
+export const workbookListState = atom<WorkbookModel[]>({
+  key: 'workbookState',
+  default: [],
 });
