@@ -5,8 +5,8 @@ export interface WorkbookLayoutProps {}
 
 const WorkbookLayout: React.FC<WorkbookLayoutProps> = ({ children }) => {
   return (
-    <main className={classnames('px-4 py-2')}>
-      <div>{children}</div>
+    <main className={classnames('w-full h-full', 'max-w-screen-xl mx-auto')}>
+      {children}
     </main>
   );
 };
