@@ -12,7 +12,7 @@ export interface MetaProps {
 
 const Meta: React.FC<MetaProps> = ({ title, description, url, keywords }) => (
   <Helmet>
-    <title>{title || SEO.TITLE}</title>
+    <title>{title ?? SEO.TITLE}</title>
     <meta property="og:title" content={title || SEO.TITLE} />
     <meta property="og:image" content={SEO.LOGO} />
     <meta property="og:site_name" content={SEO.NAME} />
