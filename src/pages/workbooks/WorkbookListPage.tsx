@@ -8,15 +8,13 @@ import { workbookListState } from '@/stores';
 import { WorkbookList } from '@/containers';
 
 const WorkbookListPage = () => {
-  const [workbooks, setWorkbooks] = useRecoilState(workbookListState);
+  const [workbooks, setWorkbookList] = useRecoilState(workbookListState);
   const { loading, setLoading } = usePageState();
 
   React.useEffect(() => {
     (async () => {
       const storedWorkbookList = await workbookDB.workbooks.toArray();
-      if (Array.isArray(storedWorkbookList)) {
-        setWorkbooks(storedWorkbookList);
-      }
+      setWorkbookList(storedWorkbookList ?? []);
       setLoading(false);
     })();
   }, []);
