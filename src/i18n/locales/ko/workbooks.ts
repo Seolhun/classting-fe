@@ -1,8 +1,8 @@
 export default {
   start: '퀴즈 풀기',
   reset: '재설정',
-  prev: '이전',
-  next: '다음',
+  prev: '이전 문항',
+  next: '다음 문항',
   submit: '제출',
   name: {
     label: '문제집 이름',
@@ -60,5 +60,8 @@ export default {
     any: '모든 유형',
     multiple: '객관식',
     boolean: '예 / 아니오',
+  },
+  inValid: {
+    noData: '유효한 문제집이 없습니다.',
   },
 };
