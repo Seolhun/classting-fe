@@ -51,7 +51,7 @@ const OverlayLoader: React.FC<OverlayLoaderProps> = ({
           </div>
         </div>
       )}
-      {children}
+      {!loading && children}
     </>
   );
 };
