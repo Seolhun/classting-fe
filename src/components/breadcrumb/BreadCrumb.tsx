@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
-import { createColorByIntent } from '@/utils';
+import { createColorByIntent, createOptionsColorByIntent } from '@/utils';
 import { IntentType } from '@/types';
 
 const CLASSNAME = 'SH__BreadCrumb';
@@ -32,14 +32,27 @@ const BreadCrumb: React.FC<BreadCrumbProps> = ({
   return (
     <div {...rests} className={classnames(CLASSNAME, className)}>
       {items.map(({ href, name }, index) => {
-        const isLast = index === items.length - 1;
+        const isFirst = index === 0;
+        if (!name) {
+          return null;
+        }
         return (
           <span
             key={`${href}-${name}`}
-            className={`${createColorByIntent(intent, 400, 'text')}`}
+            className={createColorByIntent(intent, 400, 'text')}
           >
-            <Link to={href}>{name}</Link>
-            {!isLast && <span>{' / '}</span>}
+            {!isFirst && <span>{' / '}</span>}
+            <Link
+              className={createOptionsColorByIntent(
+                ['hover'],
+                'text',
+                intent,
+                600,
+              )}
+              to={href}
+            >
+              {name}
+            </Link>
           </span>
         );
       })}

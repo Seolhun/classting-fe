@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({ children, className, ...rests }) => {
         'text-left',
         'transform transition-all',
         'overflow-hidden',
-        createOptionsColorByIntent('border', ['hover'], 'primary'),
+        createOptionsColorByIntent(['hover'], 'border', 'primary'),
       )}
     >
       <div
