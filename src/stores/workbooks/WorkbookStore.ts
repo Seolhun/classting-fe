@@ -17,12 +17,13 @@ export const workbookState = atom<WorkbookModel>({
   key: 'workbookState',
   default: {
     id: -1,
+    name: '',
     response_code: -1,
     results: [],
   },
 });
 
 export const workbookListState = atom<WorkbookModel[]>({
-  key: 'workbookState',
+  key: 'workbookListState',
   default: [],
 });

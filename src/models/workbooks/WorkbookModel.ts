@@ -35,11 +35,15 @@ export const questionCategories = Object.keys(WorkbookCategoryEnum).filter(
 export interface WorkbookModel {
   id: number;
 
+  name: string;
+
   response_code: number;
 
   results: WorkbookQuestionModel[];
 
-  name?: string;
+  startDate?: string | number | Date;
+
+  endDate?: string | number | Date;
 }
 
 export interface WorkbookQuestionModel {
@@ -63,6 +67,11 @@ export interface WorkbookQuestionModel {
 
 export interface WorkbookGeneratorModel {
   /**
+   * Custom
+   */
+  name: string;
+
+  /**
    * @default 10
    */
   amount: number;
@@ -81,9 +90,4 @@ export interface WorkbookGeneratorModel {
    * @default any
    */
   type?: WorkbookQuestionModel['type'];
-
-  /**
-   * Custom
-   */
-  name?: string;
 }
