@@ -1,3 +1,5 @@
+export * from './dayjs';
+
 export * from './useIntersectionObserver';
 export * from './useLockScroll';
 export * from './usePageState';
