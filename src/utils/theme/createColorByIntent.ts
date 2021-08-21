@@ -61,8 +61,8 @@ const createColorByIntent = (
 };
 
 const createOptionsColorByIntent = (
+  options: ColorOption[],
   prefix: ColorPrefix = '',
-  options: ColorOption[] = [],
   intent: IntentType = 'primary',
   weight: ColorWeight = 500,
 ): string => {
