@@ -2,24 +2,39 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
+import { useRecoilState } from 'recoil';
 
-import { WorkbookModel } from '@/models';
 import { Button } from '@/components';
-import { WorkbookQuestionForm } from '@/containers';
+import { WorkbookQuestion } from '@/containers';
 import { useStep } from '@/hooks';
+import { workbookState } from '@/stores';
 
-import { WorkbookQuestionFormValues } from './WorkbookQuestionForm';
+export interface WorkbookFormProps {}
 
-export interface WorkbookFormProps {
-  workbook: WorkbookModel;
-}
-
-const WorkbookForm: React.FC<WorkbookFormProps> = ({ workbook }) => {
+const WorkbookForm: React.FC<WorkbookFormProps> = () => {
   const { t } = useTranslation();
+  const [workbook, setWorkbook] = useRecoilState(workbookState);
   const { step, isFirstStep, isLastStep, nextStep, prevStep } = useStep(
-    workbook?.results?.length,
+    workbook?.results?.length - 1,
   );
-  const question = workbook?.results?.[step];
+
+  const memoQuestion = React.useMemo(() => {
+    const question = workbook?.results?.[step];
+    return question;
+  }, [workbook, step]);
+
+  const onChangeQuestion = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { value } = e.target;
+      if (workbook?.results?.[step]) {
+        Object.assign(workbook.results[step], {
+          chosenAnswer: value,
+        });
+        setWorkbook(workbook);
+      }
+    },
+    [workbook, step],
+  );
 
   const handlePrevStep = React.useCallback(() => {
     prevStep();
@@ -29,17 +44,6 @@ const WorkbookForm: React.FC<WorkbookFormProps> = ({ workbook }) => {
     nextStep();
   }, [nextStep]);
 
-  const solveQuestion = React.useCallback(
-    (values: WorkbookQuestionFormValues) => {
-      const copiedResults = [...workbook.results];
-      copiedResults[step] = {
-        ...copiedResults[step],
-        chosenAnswer: values.chosenAnswer,
-      };
-    },
-    [question, step],
-  );
-
   return (
     <div>
       <motion.div
@@ -47,7 +51,7 @@ const WorkbookForm: React.FC<WorkbookFormProps> = ({ workbook }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <WorkbookQuestionForm {...question} onSubmit={solveQuestion} />
+        <WorkbookQuestion {...memoQuestion} onChange={onChangeQuestion} />
       </motion.div>
       <div className={classnames('grid grid-cols-2 gap-4', 'mt-2')}>
         {!isFirstStep && (
@@ -70,6 +74,7 @@ const WorkbookForm: React.FC<WorkbookFormProps> = ({ workbook }) => {
               'col-span-2': isFirstStep,
             })}
             onClick={handleNextStep}
+            disabled={!memoQuestion.chosenAnswer}
           >
             {t('workbooks:next')}
           </Button>

@@ -87,12 +87,21 @@ const WorkbookGeneratorForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormWrapper label={t('workbooks:name.label')}>
         <Input
-          {...register('name')}
+          {...register('name', {
+            required: true,
+          })}
           placeholder={t('workbooks:name.placeholder')}
         />
       </FormWrapper>
       <FormWrapper label={t('workbooks:amount.label')}>
-        <Input {...register('amount')} type="number" min={1} max={50} />
+        <Input
+          {...register('amount', {
+            required: true,
+          })}
+          type="number"
+          min={1}
+          max={50}
+        />
       </FormWrapper>
       <FormWrapper label={t('workbooks:categories.label')}>
         <HTMLSelect {...register('category')} options={memoCategoriesOptions} />

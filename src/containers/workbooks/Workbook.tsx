@@ -13,12 +13,14 @@ const Workbook: React.FC<WorkbookProps> = ({ workbook }) => {
 
   return (
     <Card>
-      {workbook.name && <div>이름 : {workbook.name}</div>}
+      {workbook.name && <div>{workbook.name}</div>}
       <div className="mt-1">
-        <Tag>{t(`workbooks:difficulties.${difficulty}`)}</Tag>
-        <Tag>{t(`workbooks:type.${type}`)}</Tag>
+        <Tag>
+          {t(`common:thingsOf`, {
+            value: workbook.results.length,
+          })}
+        </Tag>
       </div>
-      <div>개수 : {workbook.results.length}</div>
     </Card>
   );
 };

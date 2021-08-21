@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { WorkbookQuestionModel } from '@/models';
 import { Card, H5, Tag, Radio } from '@/components';
 
-export interface WorkbookQuestionProps extends WorkbookQuestionModel {}
+export interface WorkbookQuestionProps extends WorkbookQuestionModel {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
 const WorkbookQuestion: React.FC<WorkbookQuestionProps> = ({
   category,
@@ -13,6 +15,7 @@ const WorkbookQuestion: React.FC<WorkbookQuestionProps> = ({
   question,
   correct_answer,
   incorrect_answers = [],
+  onChange,
 }) => {
   const { t } = useTranslation();
 
@@ -33,7 +36,12 @@ const WorkbookQuestion: React.FC<WorkbookQuestionProps> = ({
         <H5 dangerouslySetInnerHTML={{ __html: question }} />
         {memoAllAnswers.map((memoQuestion, i) => (
           <div key={i}>
-            <Radio htmlForm={`${question}-${i}`} name="chosenAnswer">
+            <Radio
+              htmlForm={`${question}-${i}`}
+              name="chosenAnswer"
+              value={memoQuestion}
+              onChange={onChange}
+            >
               {memoQuestion}
             </Radio>
           </div>
