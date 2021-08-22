@@ -8,7 +8,6 @@ import WorkbookGeneratorPage from './workbooks/WorkbookGeneratorPage';
 import WorkbookListPage from './workbooks/WorkbookListPage';
 import WorkbookPage from './workbooks/WorkbookPage';
 import WorkbookSummaryPage from './workbooks/WorkbookSummaryPage';
-import MyPage from './me/MyPage';
 
 export const mainRoutes: RouteModel[] = [
   {
@@ -40,15 +39,6 @@ export const mainRoutes: RouteModel[] = [
     path: '/workbooks/:workbookID/summary',
     exact: true,
     component: WorkbookSummaryPage,
-  },
-  {
-    key: 'MyPage',
-    name: 'Me',
-    path: '/me',
-    exact: true,
-    component: MyPage,
-    isNavigation: true,
-    uniquePath: 'me',
   },
   {
     key: 'Error404',
