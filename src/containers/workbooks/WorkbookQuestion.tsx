@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import classnames from 'classnames';
 
 import { WorkbookQuestionModel } from '@/models';
 import { Card, H5, Tag, Radio } from '@/components';
@@ -15,6 +16,7 @@ const WorkbookQuestion: React.FC<WorkbookQuestionProps> = ({
   question,
   correct_answer,
   incorrect_answers = [],
+  chosenAnswer,
   onChange,
 }) => {
   const { t } = useTranslation();
@@ -34,18 +36,27 @@ const WorkbookQuestion: React.FC<WorkbookQuestionProps> = ({
       </div>
       <div className="mt-2">
         <H5 dangerouslySetInnerHTML={{ __html: question }} />
-        {memoAllAnswers.map((memoQuestion, i) => (
-          <div key={i}>
-            <Radio
-              htmlForm={`${question}-${i}`}
-              name="chosenAnswer"
-              value={memoQuestion}
-              onChange={onChange}
-            >
-              {memoQuestion}
-            </Radio>
-          </div>
-        ))}
+        {memoAllAnswers.map((memoAnswer, i) => {
+          const isAnswer = memoAnswer === chosenAnswer;
+          return (
+            <div key={i}>
+              <Radio
+                htmlForm={`${question}-${i}`}
+                name="chosenAnswer"
+                value={memoAnswer}
+                onChange={onChange}
+                checked={isAnswer}
+              >
+                <div
+                  className={classnames({
+                    'text-red-500': isAnswer && chosenAnswer !== correct_answer,
+                  })}
+                  dangerouslySetInnerHTML={{ __html: memoAnswer }}
+                />
+              </Radio>
+            </div>
+          );
+        })}
       </div>
     </Card>
   );

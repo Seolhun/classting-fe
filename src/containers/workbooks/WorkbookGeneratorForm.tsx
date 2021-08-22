@@ -70,10 +70,9 @@ const WorkbookGeneratorForm = () => {
   }, []);
 
   const onSubmit = async (values: WorkbookGeneratorFormValues) => {
-    console.debug(values);
     const response = await APIService.workbooks.generateWorkbookList(values);
     if (Array.isArray(response.results)) {
-      const id = await workbookDB.workbooks.add({
+      const id = await workbookDB.addWorkbook({
         ...response,
         name: values.name,
       });

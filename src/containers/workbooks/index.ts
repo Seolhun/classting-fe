@@ -4,4 +4,3 @@ export * from './WorkbookList';
 export * from './WorkbookPassedTime';
 export * from './WorkbookQuestion';
 export * from './WorkbookSummary';
-export * from './WorkbookSummaryList';
