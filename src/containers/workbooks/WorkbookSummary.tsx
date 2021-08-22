@@ -1,9 +1,18 @@
 import React from 'react';
 
-export interface WorkbookSummaryProps {}
+import { WorkbookModel } from '@/models';
 
-const WorkbookSummary: React.FC<WorkbookSummaryProps> = () => {
-  return <div>WorkbookSummary</div>;
+import Workbook from './Workbook';
+export interface WorkbookSummaryProps {
+  workbook: WorkbookModel;
+}
+
+const WorkbookSummary: React.FC<WorkbookSummaryProps> = ({ workbook }) => {
+  return (
+    <div>
+      <Workbook workbook={workbook} />
+    </div>
+  );
 };
 
 export { WorkbookSummary };
