@@ -7,13 +7,6 @@ const createPrefix = (prefix: ColorPrefix) => {
   return '';
 };
 
-const createHoverByWeight = (weight: ColorWeight) => {
-  if (weight < 100) {
-    return 100;
-  }
-  return weight - 100;
-};
-
 const createIntentColor = (intent: IntentType) => {
   let intentColor = 'indigo';
   switch (intent) {
@@ -69,9 +62,7 @@ const createOptionsColorByIntent = (
   const computedPrefix = createPrefix(prefix);
   const intentColor = createIntentColor(intent);
   const optionsColorClassNames = options.reduce((strColor, option) => {
-    return `${strColor} ${option}:${computedPrefix}${intentColor}-${createHoverByWeight(
-      weight,
-    )}`;
+    return `${strColor} ${option}:${computedPrefix}${intentColor}-${weight}`;
   }, '');
   return optionsColorClassNames;
 };

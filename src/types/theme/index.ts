@@ -33,8 +33,7 @@ export type ColorPrefix =
   | 'text'
   | 'bg'
   | 'border'
-  | 'opacity'
   | 'ring'
   | 'ring-offset';
 
-export type ColorOption = 'hover' | 'focus' | 'disabled';
+export type ColorOption = 'hover' | 'focus';
