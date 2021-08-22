@@ -1,3 +1,5 @@
+import BaseModel from './BaseModel';
+
 export type WorkbookDifficulty = 'any' | 'easy' | 'medium' | 'hard';
 export type WorkbookType = 'any' | 'multiple' | 'boolean';
 export enum WorkbookCategoryEnum {
@@ -32,7 +34,7 @@ export const questionCategories = Object.keys(WorkbookCategoryEnum).filter(
   (key) => typeof WorkbookCategoryEnum[key] !== 'string',
 );
 
-export interface WorkbookModel {
+export interface WorkbookModel extends BaseModel {
   id: number;
 
   name: string;
@@ -41,9 +43,15 @@ export interface WorkbookModel {
 
   results: WorkbookQuestionModel[];
 
-  startDate?: string | number | Date;
+  /**
+   * 시작 날짜
+   */
+  startedAt?: string | Date;
 
-  endDate?: string | number | Date;
+  /**
+   * 끝난 날짜
+   */
+  endedAt?: string | Date;
 }
 
 export interface WorkbookQuestionModel {
@@ -66,9 +74,6 @@ export interface WorkbookQuestionModel {
 }
 
 export interface WorkbookGeneratorModel {
-  /**
-   * Custom
-   */
   name: string;
 
   /**
