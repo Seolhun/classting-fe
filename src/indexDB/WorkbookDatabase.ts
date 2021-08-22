@@ -4,33 +4,53 @@ import dayjs from 'dayjs';
 import { WorkbookModel } from '@/models';
 
 class WorkbookDatabase extends Dexie {
-  workbooks: Dexie.Table<WorkbookModel, number>;
+  private workbooks: Dexie.Table<WorkbookModel, number>;
 
   constructor() {
     super('WorkbookDatabase');
     this.version(1).stores({
-      workbooks: '++id, name, response_code, *results, startDate, endDate',
+      workbooks:
+        '++id, name, response_code, *results, startedAt, endedAt, createdAt, updatedAt, deletedAt',
     });
     this.workbooks = this.table('workbooks');
   }
 
-  async getByID(id: number) {
+  async addWorkbook(workbook: WorkbookModel) {
+    const id = await workbookDB.workbooks.add({
+      ...workbook,
+      name: workbook.name,
+    });
+    return id;
+  }
+
+  async getWorkbookById(id: number) {
     return await workbookDB.workbooks.get(id);
   }
 
-  async put(item: WorkbookModel) {
-    return await workbookDB.workbooks.put(item);
+  async updateWorkbook(workbook: WorkbookModel) {
+    return await workbookDB.workbooks.put(workbook);
   }
 
-  async startByID(id: number) {
-    const item = await this.getByID(id);
+  async startWorkbookByID(id: number) {
+    const item = await this.getWorkbookById(id);
     if (!item) {
       return null;
     }
-    if (!item.startDate) {
-      item.startDate = dayjs.tz(new Date()).format();
-      console.log(item.startDate);
-      await workbookDB.workbooks.put(item);
+    if (!item.startedAt) {
+      item.startedAt = dayjs.tz(new Date()).format();
+      await this.updateWorkbook(item);
+    }
+    return item;
+  }
+
+  async finishWorkbook(id: number) {
+    const item = await this.getWorkbookById(id);
+    if (!item) {
+      return null;
+    }
+    if (!item.endedAt) {
+      item.endedAt = dayjs.tz(new Date()).format();
+      await this.updateWorkbook(item);
     }
     return item;
   }
