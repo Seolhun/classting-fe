@@ -4,6 +4,11 @@ export default {
   prev: '이전 문항',
   next: '다음 문항',
   submit: '제출',
+  finish: '완료',
+  retry: '다시 풀기',
+  answer: '정답',
+  answerRatio: '정답률',
+  wrongAnswer: '오답',
   name: {
     label: '문제집 이름',
     placeholder: '문제집을 이름을 주면 구분하기 쉬워집니다.',
@@ -61,7 +66,17 @@ export default {
     multiple: '객관식',
     boolean: '예 / 아니오',
   },
+  state: {
+    completed: '제출이 완료된 문제집입니다.',
+    retry: '문제를 다시 풀고 싶으시면 다시 풀기를 눌러주세요.',
+    tags: {
+      done: '완료',
+      ing: '미완료',
+    },
+  },
   inValid: {
     noData: '유효한 문제집이 없습니다.',
   },
+  thingsOf: '{{value}}문제',
+  answerOf: '{{value}}정답',
 };
