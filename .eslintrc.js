@@ -15,7 +15,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'eslint-plugin', 'jest'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    'ecmaFeatures': {
+    ecmaFeatures: {
       'jsx': true
     }
   },
