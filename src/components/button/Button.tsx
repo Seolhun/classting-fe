@@ -39,7 +39,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           'rounded-md',
           'text-white',
           createColorByIntent(intent, intentWeight, 'bg'),
-          createOptionsColorByIntent(['disabled'], 'opacity', intent, 50),
           createOptionsColorByIntent(['hover'], 'bg', intent, intentWeight),
           createOptionsColorByIntent(
             ['focus'],
@@ -48,6 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             intentWeight,
           ),
           'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white',
+          'disabled:opacity-50 disabled:cursor-not-allowed',
         )}
       >
         {children}
