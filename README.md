@@ -2,68 +2,25 @@
 
 To Build Simple QnA React App
 
-## Scheduling
-
-- Page
-  - WorkbookGeneratorPage
-  - WorkbookListPage
-  - SummaryPage
-  - MyPage
-- Containers
-  - Workbook
-  - WorkbookList
-  - Summaries
-  - Summary
-  - AnswerStatistics
-  - HistoryNote
-- Component
-  - Button
-  - CheckBox
-  - HTMLSelect
-  - TypoGraphy
-
-7일 간 작업 스케쥴링
-
-- [x] WorkbookGeneratorPage (1일)
-  - [x] HTMLSelect
-  - [x] Button
-- [ ] WorkbookListPage (1일)
-  - [ ] WorkbookList
-  - [ ] Workbook
-  - [ ] Question
-  - [x] TypoGraphy
-  - [ ] CheckBox
-- [ ] WorkbookSummaryPage (2일)
-  - [ ] WorkbookSummary
-  - [ ] WorkbookSummaryList
-  - [ ] AnswerStatistics
-- [ ] MyPage (2일)
-  - [ ] HistoryNote
-- [ ] 테스트코드 (1일)
-  - [ ] Button
-  - [ ] Checkbox
-  - [ ] TypoGraphy
-  - [ ] ...
-
 ## 요구사항
 
 ### 필수구현
 
-- [ ] 사용자는 '퀴즈풀기' 버튼을 클릭하여 퀴즈 풀기를 시작할 수 있다.
-- [ ] 사용자는 문항에 대한 답안을 4개 보기 중에 선택할 수 있다
+- [x] 사용자는 '퀴즈풀기' 버튼을 클릭하여 퀴즈 풀기를 시작할 수 있다.
+- [x] 사용자는 문항에 대한 답안을 4개 보기 중에 선택할 수 있다
 - [ ] 사용자는 답안을 선택하면 다음 문항을 볼 수 있다.
-  - [ ] 답안 선택 후 다음 문항 버튼을 볼 수 있다.
-  - [ ] 답안이 맞았는지 틀렸는지 바로 알 수 있다.
-  - [ ] 다음 문항 버튼을 클릭하여 다음 문항으로 이동할 수 있다.
-- [ ] 모든 문항을 다 풀면 사용자는 다음과 같은 결과 정보를 볼 수 있다.
-  - [ ] 퀴즈를 마칠 때까지 소요된 시간
-  - [ ] 정답 개수
-  - [ ] 오답 수
+  - [x] 답안 선택 후 다음 문항 버튼을 볼 수 있다.
+  - [x] 답안이 맞았는지 틀렸는지 바로 알 수 있다.
+  - [x] 다음 문항 버튼을 클릭하여 다음 문항으로 이동할 수 있다.
+- [x] 모든 문항을 다 풀면 사용자는 다음과 같은 결과 정보를 볼 수 있다.
+  - [x] 퀴즈를 마칠 때까지 소요된 시간
+  - [x] 정답 개수
+  - [x] 오답 수
 
 ### 추가구현
 
-- [ ] 정 오답에 대한 비율을 차트로 표기
-- [ ] 다시 풀기
+- [x] 정 오답에 대한 비율을 차트로 표기
+- [x] 다시 풀기
 - [ ] 오답 노트
 
 ### 테스트 작성
