@@ -7,9 +7,10 @@ module.exports = {
     node: true,
   },
   extends: [
-    'eslint:recommended',
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:prettier/recommended'
   ],
   plugins: ['react', '@typescript-eslint', 'eslint-plugin', 'jest'],
@@ -21,6 +22,7 @@ module.exports = {
   },
   rules: {
     // Custom
+    'no-var-requires': 0,
     'no-unused-vars': 0,
     // React
     'react/prop-types': 0,
