@@ -8,6 +8,7 @@ const axios = new APIClient('https://opentdb.com/api.php');
 const WorkbookAPI = {
   async generateWorkbookList(
     param: GenerateWorkbookRequestParam = {
+      name: '',
       amount: 10,
     },
   ) {
