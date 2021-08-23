@@ -18,6 +18,7 @@ class WorkbookDatabase extends Dexie {
   async addWorkbook(workbook: WorkbookModel) {
     const id = await workbookDB.workbooks.add({
       ...workbook,
+      id: Date.now(),
       name: workbook.name,
     });
     return id;
@@ -25,6 +26,10 @@ class WorkbookDatabase extends Dexie {
 
   async getWorkbookById(id: number) {
     return await workbookDB.workbooks.get(id);
+  }
+
+  async getWorkbooks() {
+    return await workbookDB.workbooks.toArray();
   }
 
   async updateWorkbook(workbook: WorkbookModel) {
