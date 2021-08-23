@@ -77,4 +77,4 @@ npm run prettier
 
 ## Demo
 
-[https://github.com/Seolhun/classting-fe](https://github.com/Seolhun/classting-fe)
+[https://classting-workbook.surge.sh/#/](https://classting-workbook.surge.sh/#/)
