@@ -7,8 +7,9 @@ export default {
   finish: '완료',
   retry: '다시 풀기',
   answer: '정답',
-  answerRatio: '정답률',
   wrongAnswer: '오답',
+  answerRatio: '정답률',
+  takenTime: '소요 시간',
   name: {
     label: '문제집 이름',
     placeholder: '문제집을 이름을 주면 구분하기 쉬워집니다.',
