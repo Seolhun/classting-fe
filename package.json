@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "clean-dist": "rimraf dist/*",
-    "build": "npm run clean-dist && webpack --config=build/webpack.prod.js",
+    "clean-artifact": "rimraf docs/*",
+    "build": "npm run clean-artifact && webpack --config=build/webpack.prod.js",
     "start": "node express.js",
     "start:dev": "webpack serve --config=build/webpack.dev.js",
     "dev": "node build/dev-server.js",
