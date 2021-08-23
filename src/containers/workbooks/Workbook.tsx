@@ -7,7 +7,7 @@ import { H4, Tag } from '@/components';
 import { getWorkbookAnswerCount } from '@/helpers';
 import { useDiffTime } from '@/hooks';
 
-import WorkbookPassedTime from './WorkbookPassedTime';
+import { WorkbookPassedTime } from './WorkbookPassedTime';
 
 export interface WorkbookProps {
   workbook: WorkbookModel;
@@ -25,7 +25,7 @@ const Workbook: React.FC<WorkbookProps> = ({ workbook }) => {
     return getWorkbookAnswerCount(workbook);
   }, [workbook]);
 
-  const memoMissCount = React.useMemo(() => {
+  const memoWrongCount = React.useMemo(() => {
     return workbook.results.length - memoAnswerCount;
   }, [workbook, memoAnswerCount]);
 
@@ -57,7 +57,7 @@ const Workbook: React.FC<WorkbookProps> = ({ workbook }) => {
             {t(`workbooks:answer`)}/{t(`workbooks:wrongAnswer`)}
           </div>
           <span>
-            {isFinished ? `${memoAnswerCount}/${memoMissCount}` : ` - `}
+            {isFinished ? `${memoAnswerCount}/${memoWrongCount}` : ` - `}
           </span>
         </div>
         <div className="col-span-1">

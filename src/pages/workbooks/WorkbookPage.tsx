@@ -54,6 +54,12 @@ const WorkbookPage: React.FC = () => {
   const retryWorkbook = React.useCallback(async () => {
     const id = await workbookDB.addWorkbook({
       ...workbook,
+      results: workbook.results.map((result) => ({
+        ...result,
+        chosenAnswer: '',
+      })),
+      startedAt: undefined,
+      endedAt: undefined,
     });
     history.push(`/workbooks/${id}`);
   }, [workbook]);
