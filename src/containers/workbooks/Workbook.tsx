@@ -1,9 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import dayjs from 'dayjs';
 
 import { WorkbookModel } from '@/models';
-import { Card, H4, H6, Tag } from '@/components';
+import { H4, Tag } from '@/components';
 import { getWorkbookAnswerCount } from '@/helpers';
+import { useDiffTime } from '@/hooks';
+
+import WorkbookPassedTime from './WorkbookPassedTime';
 
 export interface WorkbookProps {
   workbook: WorkbookModel;
@@ -11,6 +15,11 @@ export interface WorkbookProps {
 
 const Workbook: React.FC<WorkbookProps> = ({ workbook }) => {
   const { t } = useTranslation();
+
+  const { day, hour, minute, second } = useDiffTime(
+    dayjs(workbook.endedAt),
+    dayjs(workbook.startedAt),
+  );
 
   const memoAnswerCount = React.useMemo(() => {
     return getWorkbookAnswerCount(workbook);
@@ -24,8 +33,9 @@ const Workbook: React.FC<WorkbookProps> = ({ workbook }) => {
     return (memoAnswerCount / workbook.results.length) * 100;
   }, [workbook, memoAnswerCount]);
 
+  const isFinished = workbook.endedAt;
   return (
-    <Card>
+    <div>
       <div>
         <Tag>
           {t(`workbooks:thingsOf`, {
@@ -41,19 +51,36 @@ const Workbook: React.FC<WorkbookProps> = ({ workbook }) => {
       <div className="mt-3">
         <H4 className="truncate">{workbook.name}</H4>
       </div>
-      <div className="flex justify-between">
-        <div>
+      <div className="grid grid-cols-4 gap-4">
+        <div className="col-span-1">
           <div className="font-bold">
             {t(`workbooks:answer`)}/{t(`workbooks:wrongAnswer`)}
           </div>
-          <span>{`${memoAnswerCount}/${memoMissCount}`}</span>
+          <span>
+            {isFinished ? `${memoAnswerCount}/${memoMissCount}` : ` - `}
+          </span>
         </div>
-        <div>
+        <div className="col-span-1">
           <div className="font-bold">{t(`workbooks:answerRatio`)}</div>
-          <span>{`${memoAnswerRatio}%`}</span>
+          <span>{isFinished ? `${memoAnswerRatio}%` : ` - `}</span>
+        </div>
+        <div className="col-span-2 text-right">
+          <div className="font-bold">{t(`workbooks:takenTime`)}</div>
+          <span>
+            {isFinished ? (
+              <WorkbookPassedTime
+                day={day}
+                hour={hour}
+                minute={minute}
+                second={second}
+              />
+            ) : (
+              ` - `
+            )}
+          </span>
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 

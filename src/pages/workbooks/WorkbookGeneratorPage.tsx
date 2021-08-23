@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Meta } from '@/components';
 import { WorkbookGeneratorForm } from '@/containers';
 
-const WorkbookGeneratorPage = () => {
+const WorkbookGeneratorPage: React.FC = () => {
   return (
     <>
       <Meta title="Build Your Workbook" />

@@ -10,9 +10,7 @@ import { useStep } from '@/hooks';
 import { workbookState } from '@/stores';
 import { workbookDB } from '@/indexDB';
 
-export interface WorkbookFormProps {}
-
-const WorkbookForm: React.FC<WorkbookFormProps> = () => {
+const WorkbookForm: React.FC = () => {
   const { t } = useTranslation();
   const history = useHistory();
   const location = useLocation();
