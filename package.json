@@ -9,7 +9,7 @@
     "start": "node express.js",
     "start:dev": "webpack serve --config=build/webpack.dev.js",
     "dev": "node build/dev-server.js",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "eslint --ext .js,.ts,.tsx,.jsx ./",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx ./ --fix",
     "prettier": "prettier --write '**/*.{ts,tsx,js,jsx}'"
