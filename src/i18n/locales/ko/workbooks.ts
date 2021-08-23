@@ -77,6 +77,7 @@ export default {
   },
   inValid: {
     noData: '유효한 문제집이 없습니다.',
+    notCompleted: '아직 완료되지 않은 문제집입니다.',
   },
   thingsOf: '{{value}}문제',
   answerOf: '{{value}}정답',
