@@ -53,6 +53,13 @@ const createColorByIntent = (
   return colorClassNames;
 };
 
+const createOptionByWeight = (weight: ColorWeight): any => {
+  if (weight < 100) {
+    return 100;
+  }
+  return weight - 100;
+};
+
 const createOptionsColorByIntent = (
   options: ColorOption[],
   prefix: ColorPrefix = '',
@@ -62,7 +69,9 @@ const createOptionsColorByIntent = (
   const computedPrefix = createPrefix(prefix);
   const intentColor = createIntentColor(intent);
   const optionsColorClassNames = options.reduce((strColor, option) => {
-    return `${strColor} ${option}:${computedPrefix}${intentColor}-${weight}`;
+    return `${strColor} ${option}:${computedPrefix}${intentColor}-${createOptionByWeight(
+      weight,
+    )}`;
   }, '');
   return optionsColorClassNames;
 };
