@@ -8,6 +8,7 @@ interface UseScrollTriggerProps {
 
 const DEFAULT_PROPS: UseScrollTriggerProps = {
   loading: true,
+
   error: false,
 };
 
@@ -17,15 +18,22 @@ const usePageState = (props: UseScrollTriggerProps = DEFAULT_PROPS) => {
   const [errorMessage, setErrorMessage] = React.useState('');
   const [statusCode, setStatusCode] = React.useState(200);
 
-  const onError = (error: boolean, statusCode?: number, message?: string) => {
-    setErrorMessage(message!);
-    setStatusCode(statusCode!);
-    setError(error);
-  };
+  const onError = React.useCallback(
+    (error: boolean, statusCode?: number, message?: string) => {
+      if (message != null) {
+        setErrorMessage(message);
+      }
+      if (statusCode != null) {
+        setStatusCode(statusCode);
+      }
+      setError(error);
+    },
+    [],
+  );
 
-  const onLoad = (loading: boolean) => {
+  const onLoad = React.useCallback((loading: boolean) => {
     setLoading(loading);
-  };
+  }, []);
 
   return {
     loading,
