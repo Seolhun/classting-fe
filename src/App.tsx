@@ -1,26 +1,33 @@
+import 'tailwindcss/tailwind.css';
+import './vendors';
+import './assets/tailwind.css';
+import './assets/app.scss';
+
+// React
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
+import { I18nextProvider } from 'react-i18next';
+import { RecoilRoot } from 'recoil';
 
-function App() {
+import i18n from './i18n';
+import { ErrorBoundary } from './components';
+import { MainRoutes } from './pages/MainRoutes';
+
+const Root = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary>
+      <RecoilRoot>
+        <I18nextProvider i18n={i18n}>
+          <HashRouter>
+            <React.Suspense fallback={null}>
+              <MainRoutes />
+            </React.Suspense>
+          </HashRouter>
+        </I18nextProvider>
+      </RecoilRoot>
+    </ErrorBoundary>
   );
-}
+};
 
-export default App;
+ReactDOM.render(<Root />, document.getElementById('root'));

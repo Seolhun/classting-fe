@@ -1,0 +1,20 @@
+// Form
+.SH__FormWrapper {
+  & + & {
+    margin-top: 1rem;
+  }
+}
+
+// Form
+.SH__FormGroup {
+  &.Horizontal {
+    & > * + * {
+      margin-left: 0.3rem;
+    }
+  }
+  &.Vertical {
+    & > * + * {
+      margin-top: 0.3rem;
+    }
+  }
+}

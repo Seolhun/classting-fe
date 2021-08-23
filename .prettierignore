@@ -1,0 +1,29 @@
+# Default
+dist
+node_modules
+
+# Typescript
+*.d.ts
+
+# Webpack Configuration
+webpack.*.js
+
+# Babel Configuration
+babel.config.js
+
+# Babel Configuration
+*.js
+
+# eslint
+.eslintrc.js
+
+# Test Code
+test/**
+*.test.*
+
+# JetBrains
+.next
+.idea
+
+# Sub project
+electron/**
