@@ -74,3 +74,7 @@ npm run lint:fix
 ```bash
 npm run prettier
 ```
+
+## Demo
+
+[https://github.com/Seolhun/classting-fe](https://github.com/Seolhun/classting-fe)
